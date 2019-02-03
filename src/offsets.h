@@ -25,8 +25,8 @@ namespace Offset {
 
     namespace Static {
         constexpr size_t SignOnState = 0x1a0;
-        constexpr size_t ViewAngles = 0x8E20;
-        constexpr size_t BoneMatrix = 0x2c78;
+        constexpr size_t ViewAngles = 0x8E98;
+        constexpr size_t BoneMatrix = 0x2c54 + 0x2c; //0x2c78;
         constexpr size_t BoneDistance = 0x30; // Read(BoneMatrix) + BoneDistance
     };
 };

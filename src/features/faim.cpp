@@ -20,7 +20,7 @@ bool FAim::GetBonePosition(uintptr_t ePtr, int bone, Vector *out)
 {
     matrix3x4_t mat;
     uintptr_t pBoneMatrix;
-    if (!m_mem.Read(ePtr + 0x2c80, &pBoneMatrix)) {
+    if (!m_mem.Read(ePtr + Offset::Static::BoneMatrix, &pBoneMatrix)) {
         Log("[FAim/Aim] Failed to get bone matrix");
         return false;
     }
@@ -176,7 +176,6 @@ void FAim::Aim(uintptr_t localPlayer, int myTeam)
             }
         }
     }
-
     if (bestTarget.x != 0.f) {
         if (Config::AimBot::RecoilControl) {
             punchAngle += punchAngle;
@@ -186,7 +185,6 @@ void FAim::Aim(uintptr_t localPlayer, int myTeam)
         Vector anglesDir = HMath::VectorAngles(vecEyes);
         Vector clampedDir = HMath::ClampAngle(anglesDir);
         Vector diffAngles = HMath::ClampAngle(viewAngle - clampedDir + punchAngle);
-
         float aimSpeed = Config::AimBot::AimSpeed;
         float aimCorrection = Config::AimBot::AimCorrection;
         if (!Config::AimBot::UseMouseEvents) {
@@ -235,7 +233,6 @@ void FAim::Run() {
 
         int myTeam;
         if (!m_mem.Read(localPlayer + Netvar::CBaseEntity::m_iTeamNum, &myTeam)) {
-            WaitMs(20);
             continue;
         }
 
