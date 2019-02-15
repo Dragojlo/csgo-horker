@@ -1,3 +1,6 @@
+# NOTICE
+This project is now dormant and will receive no further updates at this time.  Due to poor design choices the current code base isn't pleasant at all to work on.
+
 # Horker
 A simple CSGO Linux external hack.
 
